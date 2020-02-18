@@ -15,7 +15,7 @@ const pairs =  getpairs(students);
 const getThemes = (pairs, themes) => {
     const themesForStudents = [];
     for (let i = 0; i < pairs.length; i++) {
-        themesForStudents.push([pairs[i], themes[i]])
+        themesForStudents.push([pairs[i].join(' и '), themes[i]])
     }
     return themesForStudents;
 };
@@ -31,18 +31,18 @@ const getStudentsMarks = (students, marks) => {
 };
     console.log (getStudentsMarks(students, marks));
 
-
-const getRandomMarksForTasks =(students, marks) => {
+const themesForStudents = getThemes(pairs, themes);
+const getRandomMarksForTasks =(themesForStudents, marks) => {
     const randomMarksForStudents = [];
-    for (let i = 0; i < students.length; i++) {
-        randomMarksForStudents.push([students[i],marks[Math.floor(Math.random() * marks.length)]])
+    for (let i = 0; i < themesForStudents.length; i++) {
+        randomMarksForStudents.push([themesForStudents[i],marks[Math.floor(Math.random() * marks.length)]])
     }
     return randomMarksForStudents;
 };
-    console.log (getRandomMarksForTasks(students, marks));
+    console.log (getRandomMarksForTasks(themesForStudents, marks));
 
    
     document.writeln(`<p> Pairs: ${getpairs(students)}</p>`);
     document.writeln(`<p> Themes: ${getThemes(pairs, themes)} </p>`);
     document.writeln(`<p> Marks: ${getStudentsMarks(students, marks)}</p>`);
-    document.writeln(`<p> Random marks: ${getRandomMarksForTasks(students, marks)}</p>`);
+    document.writeln(`<p> Random marks: ${getRandomMarksForTasks(themesForStudents, marks)}</p>`);
